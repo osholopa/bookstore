@@ -30,6 +30,22 @@ public class BookController {
 		repository.save(book);
 		return "redirect:booklist";
 	}
+	@GetMapping(value="/edit/{id}")
+	public String edit(@PathVariable("id") Long bookId, Book book, Model model) {
+		Book toBeEdited = repository.findById(bookId).get();
+		model.addAttribute("book", toBeEdited);
+		return "edit";
+	}
+	@PostMapping(value="/update/{id}")
+	public String updateBook(@PathVariable("id") Long bookId, Book book, Model model) {
+		Book toBeUpdated = repository.findById(bookId).get();
+		toBeUpdated.setAuthor(book.getAuthor());
+		toBeUpdated.setTitle(book.getTitle());
+		toBeUpdated.setIsbn(book.getIsbn());
+		toBeUpdated.setYear(book.getYear());
+		repository.save(toBeUpdated);
+		return "redirect:../booklist";
+	}
 	@GetMapping(value="/delete/{id}")
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		repository.deleteById(bookId);
