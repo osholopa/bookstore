@@ -22,7 +22,7 @@ public class BookstoreApplication {
 	public CommandLineRunner initialBooks(BookRepository repository) {
 		return (args) -> {
 			log.info("insert a few example books");
-			repository.save(new Book("Java-ohjelmointi", "Mika VesterHolm, Jorma Kyppö", "978-952-14-3556-0", 2018));
+			repository.save(new Book("Java-ohjelmointi", "Mika Vesterholm, Jorma Kyppö", "978-952-14-3556-0", 2018));
 			repository.save(new Book("Personality disorders", "Thomas A. Widiger, Paul T. Costa Jr.", "978-1-4338-1166-1", 2013));
 		};
 	}
