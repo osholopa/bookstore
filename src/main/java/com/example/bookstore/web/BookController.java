@@ -71,4 +71,8 @@ public class BookController {
 	public @ResponseBody Optional<Book> findById(@PathVariable("id") Long bookId) {
 		return bookrepository.findById(bookId);
 	}
+	@GetMapping(value="/login")
+	public String loginPage() {
+		return "login";
+	}
 }
