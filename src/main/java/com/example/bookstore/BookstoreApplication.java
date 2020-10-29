@@ -25,6 +25,9 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner initialBooksAndCategories(BookRepository repository, CategoryRepository categories, UserRepository users) {
 		return (args) -> {
+			repository.deleteAll();
+			categories.deleteAll();
+			users.deleteAll();
 			log.info("insert a few example books");
 			Category programming = new Category("programming");
 			Category psychology = new Category("psychology");	
